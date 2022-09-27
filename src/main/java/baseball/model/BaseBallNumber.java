@@ -1,9 +1,14 @@
 package baseball.model;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashSet;
 
 public class BaseBallNumber {
     private final String number;
+
+    public BaseBallNumber() {
+        this.number = makeNumber();
+    }
 
     public BaseBallNumber(String number) {
         this.number = number;
@@ -19,6 +24,19 @@ public class BaseBallNumber {
             }
         }
         return ballCnt + " " + strikeCnt;
+    }
+
+    public static String makeNumber(){
+        boolean[] visited = new boolean[10];
+        int[] a = new int[10];
+        StringBuilder sb = new StringBuilder();
+        while(sb.length()<3){
+            int randomPick = Randoms.pickNumberInRange(1,9);
+            if(visited[randomPick])continue;
+            visited[randomPick]=true;
+            sb.append(randomPick);
+        }
+        return sb.toString();
     }
 
     public static boolean isValid(String input){
