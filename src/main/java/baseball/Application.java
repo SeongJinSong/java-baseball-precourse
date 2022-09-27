@@ -9,9 +9,9 @@ public class Application {
         GameView gameview = new GameView();
         while (!"exit".equals(gameview.getState())) {
             if ("booting".equals(gameview.getState())) {
-                gameview.receiveArgs();
+                gameview.receiveNumberWhenBooting();
             }else if("in-game".equals(gameview.getState())){
-                gameview.receiveInGame();
+                gameview.receiveStringInGame();
             }else if("end".equals(gameview.getState())){
                 gameview.receiveOption();
             }

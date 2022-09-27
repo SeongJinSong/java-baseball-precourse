@@ -2,19 +2,24 @@ package baseball.view;
 
 import baseball.model.BaseBallNumber;
 import camp.nextstep.edu.missionutils.*;
+import java.util.ArrayList;
+import java.util.List;
+
 public class GameView {
     private String state = "booting";
     private BaseBallNumber baseBallNumber;
     public GameView(){
         baseBallNumber = new BaseBallNumber();
     }
-    public void receiveArgs() {
-        String result = Console.readLine();
-        checkValid(result);
-        baseBallNumber = new BaseBallNumber(result);
+    public void receiveNumberWhenBooting() {
+        List<Character> list = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            list.add((char)(Randoms.pickNumberInRange(1, 9)+'0'));
+        }
+        baseBallNumber = new BaseBallNumber(list);
         state = "in-game";
     }
-    public void receiveInGame() {
+    public void receiveStringInGame() {
         System.out.println("숫자를 입력해주세요 :");
         String result = Console.readLine();
         if (checkGameOptionInput(result)) {
@@ -58,7 +63,6 @@ public class GameView {
 
     private boolean checkGameOptionInput(String result) {
         if("1".equals(result)){
-            baseBallNumber = new BaseBallNumber();
             state = "booting";
             return true;
         }
