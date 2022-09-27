@@ -48,4 +48,7 @@ public class GameView {
         }
         throw new IllegalArgumentException("invalid option");
     }
+    public String getState() {
+        return state;
+    }
 }
