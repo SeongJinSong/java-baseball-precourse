@@ -1,16 +1,18 @@
 package baseball.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 
 public class BaseBallNumber {
-    private final String number;
+    private final List<Character> number;
 
     public BaseBallNumber() {
-        this.number = makeNumber();
+        number = new ArrayList<>();
     }
 
-    public BaseBallNumber(String number) {
+    public BaseBallNumber(List<Character> number) {
         this.number = number;
     }
 
@@ -28,7 +30,6 @@ public class BaseBallNumber {
 
     public static String makeNumber(){
         boolean[] visited = new boolean[10];
-        int[] a = new int[10];
         StringBuilder sb = new StringBuilder();
         while(sb.length()<3){
             int randomPick = Randoms.pickNumberInRange(1,9);

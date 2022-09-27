@@ -1,12 +1,12 @@
 package baseball.model;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.fail;
+
+import java.util.Arrays;
 import java.util.HashSet;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.fail;
 
 class BaseBallNumberTest {
     @Test
@@ -34,12 +34,12 @@ class BaseBallNumberTest {
 
     @Test
     void check(){
-        BaseBallNumber baseBallNumber1 = new BaseBallNumber("425");
+        BaseBallNumber baseBallNumber1 = new BaseBallNumber(Arrays.asList('4', '2', '5'));
         assertThat(baseBallNumber1.check("123")).isEqualTo("0 1");
         assertThat(baseBallNumber1.check("456")).isEqualTo("1 1");
         assertThat(baseBallNumber1.check("789")).isEqualTo("0 0");
 
-        BaseBallNumber baseBallNumber2 = new BaseBallNumber("713");
+        BaseBallNumber baseBallNumber2 = new BaseBallNumber(Arrays.asList('7', '1', '3'));
         assertThat(baseBallNumber2.check("123")).isEqualTo("1 1");
         assertThat(baseBallNumber2.check("145")).isEqualTo("1 0");
         assertThat(baseBallNumber2.check("671")).isEqualTo("2 0");
