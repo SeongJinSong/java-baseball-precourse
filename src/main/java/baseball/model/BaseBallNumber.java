@@ -1,5 +1,7 @@
 package baseball.model;
 
+import java.util.HashSet;
+
 public class BaseBallNumber {
     private final String number;
 
@@ -17,5 +19,15 @@ public class BaseBallNumber {
             }
         }
         return ballCnt + " " + strikeCnt;
+    }
+
+    public static boolean isValid(String input){
+        if(input.length()!=3)return false;
+        HashSet<Character> hs = new HashSet<>();
+        for(char c : input.toCharArray()){
+            if(c-'0'<1||c-'0'>9)return false;
+            if(!hs.add(c))return false;
+        }
+        return true;
     }
 }

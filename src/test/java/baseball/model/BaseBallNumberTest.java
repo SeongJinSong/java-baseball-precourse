@@ -20,4 +20,13 @@ class BaseBallNumberTest {
         assertThat(baseBallNumber2.check("216")).isEqualTo("0 1");
         assertThat(baseBallNumber2.check("713")).isEqualTo("0 3");
     }
+
+    @Test
+    void isValidTest(){
+        assertThat(BaseBallNumber.isValid("111")).isFalse();
+        assertThat(BaseBallNumber.isValid("012")).isFalse();
+        assertThat(BaseBallNumber.isValid("a12")).isFalse();
+        assertThat(BaseBallNumber.isValid("212")).isFalse();
+        assertThat(BaseBallNumber.isValid("123")).isTrue();
+    }
 }
