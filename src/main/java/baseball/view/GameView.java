@@ -32,6 +32,7 @@ public class GameView {
     private void checkValid(String result) {
         if(!BaseBallNumber.isValid(result)) {
             state = "exit";
+            System.out.println("게임 종료");
             throw new IllegalArgumentException("invalid baseball number");
         }
     }
@@ -63,6 +64,7 @@ public class GameView {
         }
         if("2".equals(result)){
             state = "exit";
+            System.out.println("게임 종료");
             return true;
         }
         return false;
