@@ -33,4 +33,19 @@ public class GameView {
         if(ball!=0&&strike!=0)return ball+"볼 "+ strike+"스트라이크";
         throw new IllegalArgumentException("invalid baseball check response");
     }
+
+    public void receiveOption(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String result = Console.readLine();
+        if("1".equals(result)){
+            baseBallNumber = new BaseBallNumber();
+            state = "start";
+            return;
+        }
+        if("2".equals(result)){
+            state = "exit";
+            return;
+        }
+        throw new IllegalArgumentException("invalid option");
+    }
 }
