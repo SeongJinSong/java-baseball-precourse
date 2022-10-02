@@ -35,16 +35,16 @@ class BaseBallNumberTest {
     @Test
     void check(){
         BaseBallNumber baseBallNumber1 = new BaseBallNumber(Arrays.asList('4', '2', '5'));
-        assertThat(baseBallNumber1.check("123")).isEqualTo("0 1");
-        assertThat(baseBallNumber1.check("456")).isEqualTo("1 1");
-        assertThat(baseBallNumber1.check("789")).isEqualTo("0 0");
+        assertThat(baseBallNumber1.compare("123")).isEqualTo("0 1");
+        assertThat(baseBallNumber1.compare("456")).isEqualTo("1 1");
+        assertThat(baseBallNumber1.compare("789")).isEqualTo("0 0");
 
         BaseBallNumber baseBallNumber2 = new BaseBallNumber(Arrays.asList('7', '1', '3'));
-        assertThat(baseBallNumber2.check("123")).isEqualTo("1 1");
-        assertThat(baseBallNumber2.check("145")).isEqualTo("1 0");
-        assertThat(baseBallNumber2.check("671")).isEqualTo("2 0");
-        assertThat(baseBallNumber2.check("216")).isEqualTo("0 1");
-        assertThat(baseBallNumber2.check("713")).isEqualTo("0 3");
+        assertThat(baseBallNumber2.compare("123")).isEqualTo("1 1");
+        assertThat(baseBallNumber2.compare("145")).isEqualTo("1 0");
+        assertThat(baseBallNumber2.compare("671")).isEqualTo("2 0");
+        assertThat(baseBallNumber2.compare("216")).isEqualTo("0 1");
+        assertThat(baseBallNumber2.compare("713")).isEqualTo("0 3");
     }
 
     @Test

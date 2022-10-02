@@ -1,20 +1,13 @@
 package baseball;
 
+import baseball.game.BaseBallGame;
 import baseball.model.BaseBallNumber;
 import baseball.view.GameView;
 
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        GameView gameview = new GameView();
-        while (!"exit".equals(gameview.getState())) {
-            if ("booting".equals(gameview.getState())) {
-                gameview.receiveNumberWhenBooting();
-            }else if("in-game".equals(gameview.getState())){
-                gameview.receiveStringInGame();
-            }else if("end".equals(gameview.getState())){
-                gameview.receiveOption();
-            }
-        }
+        BaseBallGame baseBallGame = new BaseBallGame();
+        baseBallGame.start();
     }
 }

@@ -6,26 +6,46 @@ import java.util.HashSet;
 import java.util.List;
 
 public class BaseBallNumber {
-    private final List<Character> number;
+    private final List<Character> numbers;
 
     public BaseBallNumber() {
-        number = new ArrayList<>();
+        numbers = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            numbers.add((char)(Randoms.pickNumberInRange(1, 9)+'0'));
+        }
     }
 
     public BaseBallNumber(List<Character> number) {
-        this.number = number;
+        this.numbers = number;
     }
 
-    public String check(String input){
+    public BaseBallNumber(String s) {
+        numbers = new ArrayList<>();
+        for (int i = 0; i < s.length(); i++) {
+            numbers.add(s.charAt(i));
+        }
+    }
+
+    public String compare(String input){
         int ballCnt = 0, strikeCnt = 0;
         for (int i = 0; i < input.length(); i++) {
-            int idx = number.indexOf(input.charAt(i));
+            int idx = numbers.indexOf(input.charAt(i));
             if(idx!=-1){
                 if(i==idx)strikeCnt++;
                 else ballCnt++;
             }
         }
         return ballCnt + " " + strikeCnt;
+    }
+
+    public BaseBallNumber getNumbers(){
+        return this;
+    }
+
+    public String getNumberString(){
+        StringBuilder sb = new StringBuilder();
+        for(char c : numbers) sb.append(c);
+        return sb.toString();
     }
 
     public static String makeNumber(){
