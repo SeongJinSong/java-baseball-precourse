@@ -3,16 +3,16 @@ package baseball.model;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.fail;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class BaseBallNumberTest {
+    BaseBallNumber baseBallNumber = new BaseBallNumber();
     @Test
     @DisplayName("임의의 숫자 사이즈 검증")
     void makeNumberSize(){
-        assertThat(BaseBallNumber.makeNumber().length()).isEqualTo(3);
+        assertThat(baseBallNumber.makeNumber().length()).isEqualTo(3);
     }
 
     @Test
@@ -22,7 +22,7 @@ class BaseBallNumberTest {
             int n = 100;
             while (n-- > 0) {
                 HashSet<Character> hs = new HashSet<>();
-                for (char c : BaseBallNumber.makeNumber().toCharArray()) {
+                for (char c : baseBallNumber.makeNumber().toCharArray()) {
                     if (!hs.add(c)) throw new RuntimeException();
                 }
             }
@@ -35,10 +35,10 @@ class BaseBallNumberTest {
     @Test
     @DisplayName("BaseBallNumber 가 정상적인지 판단하는 체크 로직")
     void isValidTest(){
-        assertThat(BaseBallNumber.isValid("111")).isFalse();
-        assertThat(BaseBallNumber.isValid("012")).isFalse();
-        assertThat(BaseBallNumber.isValid("a12")).isFalse();
-        assertThat(BaseBallNumber.isValid("212")).isFalse();
-        assertThat(BaseBallNumber.isValid("123")).isTrue();
+        assertThat(baseBallNumber.isValidBaseballNumber("111")).isFalse();
+        assertThat(baseBallNumber.isValidBaseballNumber("012")).isFalse();
+        assertThat(baseBallNumber.isValidBaseballNumber("a12")).isFalse();
+        assertThat(baseBallNumber.isValidBaseballNumber("212")).isFalse();
+        assertThat(baseBallNumber.isValidBaseballNumber("123")).isTrue();
     }
 }

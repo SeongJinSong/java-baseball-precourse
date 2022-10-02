@@ -10,13 +10,11 @@ public class BaseBallNumber {
 
     public BaseBallNumber() {
         numbers = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
-            numbers.add((char) (Randoms.pickNumberInRange(1, 9) + '0'));
-        }
+        makeNumber();
     }
 
     public BaseBallNumber(String s) {
-        if (!isValid(s)) {
+        if (!isValidBaseballNumber(s)) {
             throw new IllegalArgumentException("invalid baseball number");
         }
         numbers = new ArrayList<>();
@@ -33,33 +31,39 @@ public class BaseBallNumber {
         return sb.toString();
     }
 
-    public static String makeNumber() {
+    public String makeNumber() {
         boolean[] visited = new boolean[10];
         StringBuilder sb = new StringBuilder();
         while (sb.length() < 3) {
-            int randomPick = Randoms.pickNumberInRange(1, 9);
-            if (visited[randomPick]) {
-                continue;
-            }
-            visited[randomPick] = true;
-            sb.append(randomPick);
+            checkNumberAndAppend(visited, sb);
         }
         return sb.toString();
     }
 
-    public static boolean isValid(String input) {
+    private void checkNumberAndAppend(boolean[] visited, StringBuilder sb) {
+        int randomPick = Randoms.pickNumberInRange(1, 9);
+        if (visited[randomPick]) {
+            return;
+        }
+        visited[randomPick] = true;
+        numbers.add((char)(randomPick + '0'));
+        sb.append(randomPick);
+    }
+
+    public boolean isValidBaseballNumber(String input) {
         if (input.length() != 3) {
             return false;
         }
         HashSet<Character> hs = new HashSet<>();
+        return !checkBaseBallNumberRule(input, hs);
+    }
+
+    private boolean checkBaseBallNumberRule(String input, HashSet<Character> hs) {
         for (char c : input.toCharArray()) {
-            if (c - '0' < 1 || c - '0' > 9) {
-                return false;
-            }
-            if (!hs.add(c)) {
-                return false;
+            if (c - '0' < 1 || c - '0' > 9 || !hs.add(c)) {
+                return true;
             }
         }
-        return true;
+        return false;
     }
 }
