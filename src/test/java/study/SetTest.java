@@ -31,21 +31,23 @@ public class SetTest {
 
     @Test
     @DisplayName("요구사항 1 : Set의 크기 확인")
-    void setSizeTest(){
+    void setSizeTest() {
         assertThat(numbers.size()).isEqualTo(3);
     }
+
     @Test
     @DisplayName("요구사항 2-1 : set contains 함수 확인")
-    void setContainsTest(){
+    void setContainsTest() {
         assertThat(numbers.contains(1)).isTrue();
         assertThat(numbers.contains(2)).isTrue();
         assertThat(numbers.contains(3)).isTrue();
 
     }
+
     @DisplayName("요구사항 2-2 : set contains 함수 확인")
     @ParameterizedTest(name = "{index} => {arguments} is contained : {0}")
     @ValueSource(ints = {1, 2, 3})
-    void setContainsParameterizedTest(int input){
+    void setContainsParameterizedTest(int input) {
         assertThat(numbers.contains(input)).isTrue();
 
     }
@@ -53,7 +55,7 @@ public class SetTest {
     @DisplayName("요구사항 3 : set contains 아닌 경우 확인")
     @ParameterizedTest
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
-    void setContainsTest(int input, boolean expected){
+    void setContainsTest(int input, boolean expected) {
         assertThat(numbers.contains(input)).isEqualTo(expected);
     }
 }

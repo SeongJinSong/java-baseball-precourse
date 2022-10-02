@@ -9,21 +9,23 @@ import static org.assertj.core.api.Assertions.*;
 public class StringTest {
     @Test
     @DisplayName("요구사항 1 : split 함수 동작 테스트")
-    void splitTest(){
+    void splitTest() {
         String s = "1,2";
         assertThat(s.split(",")).containsExactly("1", "2");
         String s2 = "1";
         assertThat(s2.split(",")).contains("1");
     }
+
     @Test
     @DisplayName("요구사항 2 : substirng 함수 동작 테스트")
-    void substringTest(){
+    void substringTest() {
         String s = "(1,2)";
         assertThat(s.substring(1, s.length() - 1)).isEqualTo("1,2");
     }
+
     @Test
     @DisplayName("요구사항 3 : charAt 함수 동작 테스트")
-    void charAtTest(){
+    void charAtTest() {
         String s = "abc";
         assertThat(s.charAt(0)).isEqualTo('a');
         assertThatThrownBy(() -> s.charAt(s.length()))

@@ -11,15 +11,19 @@ public class BaseBallGameController {
     private GameStatus gameStatus = new Ready();
     private BaseBallNumber computerBaseBallNumber;
     private BaseBallNumber playerBaseBallNumber;
-    public void play(){
+
+    public void play() {
         gameStatus = gameStatus.play(this);
     }
+
     public void init() {
         computerBaseBallNumber = new BaseBallNumber();
     }
-    public boolean isExit(){
+
+    public boolean isExit() {
         return gameStatus.isExit();
     }
+
     public void getPlayerInput() {
         StandardOutput.print("숫자를 입력해주세요: ");
         String result = StandardInput.readLine();
@@ -31,7 +35,8 @@ public class BaseBallGameController {
             throw e;
         }
     }
-    public String judge(){
+
+    public String judge() {
         Referee referee = new Referee(computerBaseBallNumber, playerBaseBallNumber);
         return referee.judge();
     }

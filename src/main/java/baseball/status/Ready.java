@@ -2,7 +2,7 @@ package baseball.status;
 
 import baseball.game.BaseBallGameController;
 
-public class Ready implements GameStatus{
+public class Ready implements GameStatus {
     @Override
     public GameStatus play(BaseBallGameController controller) {
         controller.init();

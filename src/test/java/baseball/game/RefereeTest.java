@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class RefereeTest {
     @Test
     @DisplayName("심판이 판단을 정상적으로 하는지 테스트")
-    void judge(){
+    void judge() {
         BaseBallNumber playerBaseBallNumber;
         BaseBallNumber computerBaseBallNumber = new BaseBallNumber("425");
         playerBaseBallNumber = new BaseBallNumber("123");

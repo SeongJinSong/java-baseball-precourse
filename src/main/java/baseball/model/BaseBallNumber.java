@@ -11,7 +11,7 @@ public class BaseBallNumber {
     public BaseBallNumber() {
         numbers = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
-            numbers.add((char)(Randoms.pickNumberInRange(1, 9)+'0'));
+            numbers.add((char) (Randoms.pickNumberInRange(1, 9) + '0'));
         }
     }
 
@@ -25,30 +25,40 @@ public class BaseBallNumber {
         }
     }
 
-    public String getNumberString(){
+    public String getNumberString() {
         StringBuilder sb = new StringBuilder();
-        for(char c : numbers) sb.append(c);
+        for (char c : numbers) {
+            sb.append(c);
+        }
         return sb.toString();
     }
 
-    public static String makeNumber(){
+    public static String makeNumber() {
         boolean[] visited = new boolean[10];
         StringBuilder sb = new StringBuilder();
-        while(sb.length()<3){
-            int randomPick = Randoms.pickNumberInRange(1,9);
-            if(visited[randomPick])continue;
-            visited[randomPick]=true;
+        while (sb.length() < 3) {
+            int randomPick = Randoms.pickNumberInRange(1, 9);
+            if (visited[randomPick]) {
+                continue;
+            }
+            visited[randomPick] = true;
             sb.append(randomPick);
         }
         return sb.toString();
     }
 
-    public static boolean isValid(String input){
-        if(input.length()!=3)return false;
+    public static boolean isValid(String input) {
+        if (input.length() != 3) {
+            return false;
+        }
         HashSet<Character> hs = new HashSet<>();
-        for(char c : input.toCharArray()){
-            if(c-'0'<1||c-'0'>9)return false;
-            if(!hs.add(c))return false;
+        for (char c : input.toCharArray()) {
+            if (c - '0' < 1 || c - '0' > 9) {
+                return false;
+            }
+            if (!hs.add(c)) {
+                return false;
+            }
         }
         return true;
     }
