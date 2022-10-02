@@ -1,11 +1,9 @@
 package baseball.game;
 
 import baseball.model.BaseBallNumber;
-import baseball.port.inbound.StandardInput;
-import baseball.port.outbound.StandardOutput;
-import baseball.status.Exit;
-import baseball.status.GameStatus;
-import baseball.status.Ready;
+import baseball.model.Referee;
+import baseball.view.status.GameStatus;
+import baseball.view.status.Ready;
 
 public class BaseBallGameController {
     private GameStatus gameStatus = new Ready();
@@ -24,16 +22,8 @@ public class BaseBallGameController {
         return gameStatus.isExit();
     }
 
-    public void getPlayerInput() {
-        StandardOutput.print("숫자를 입력해주세요: ");
-        String result = StandardInput.readLine();
-        try {
-            playerBaseBallNumber = new BaseBallNumber(result);
-        } catch (IllegalArgumentException e) {
-            StandardOutput.println("게임 종료");
-            gameStatus = new Exit();
-            throw e;
-        }
+    public void setPlayerBaseBallNumber(BaseBallNumber baseBallNumber) {
+        playerBaseBallNumber = baseBallNumber;
     }
 
     public String judge() {

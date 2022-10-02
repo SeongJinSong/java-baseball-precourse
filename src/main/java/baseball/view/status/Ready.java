@@ -1,4 +1,4 @@
-package baseball.status;
+package baseball.view.status;
 
 import baseball.game.BaseBallGameController;
 

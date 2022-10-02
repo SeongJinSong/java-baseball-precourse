@@ -1,4 +1,4 @@
-package baseball.port.outbound;
+package baseball.view.port.outbound;
 
 import javax.naming.OperationNotSupportedException;
 

@@ -1,7 +1,7 @@
-package baseball.status;
+package baseball.view.status;
 
 import baseball.game.BaseBallGameController;
-import baseball.port.outbound.StandardOutput;
+import baseball.view.port.outbound.StandardOutput;
 
 public class Exit implements GameStatus {
     @Override

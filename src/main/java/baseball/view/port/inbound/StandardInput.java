@@ -1,4 +1,4 @@
-package baseball.port.inbound;
+package baseball.view.port.inbound;
 
 import camp.nextstep.edu.missionutils.Console;
 

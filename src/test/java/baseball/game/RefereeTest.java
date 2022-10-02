@@ -1,6 +1,7 @@
 package baseball.game;
 
 import baseball.model.BaseBallNumber;
+import baseball.model.Referee;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

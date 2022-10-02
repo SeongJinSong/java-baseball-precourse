@@ -1,8 +1,8 @@
-package baseball.status;
+package baseball.view.status;
 
 import baseball.game.BaseBallGameController;
-import baseball.port.inbound.StandardInput;
-import baseball.port.outbound.StandardOutput;
+import baseball.view.port.inbound.StandardInput;
+import baseball.view.port.outbound.StandardOutput;
 
 public class Finish implements GameStatus {
     public final String RESTART = "1";
