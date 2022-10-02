@@ -1,16 +1,13 @@
 package baseball.status;
 
 import baseball.game.BaseBallGameController;
-import baseball.model.BaseBallNumber;
 import baseball.port.outbound.StandardOutput;
 import baseball.view.GameView;
 
-public class Playing implements GameStatus{
+public class Verifying implements GameStatus{
     @Override
     public GameStatus play(BaseBallGameController controller) {
-        BaseBallNumber playerBaseBallNumber = controller.getPlayerBaseBallNumbers();
-        BaseBallNumber computerBaseBallNumber = controller.getComputerBaseBallNumbers();
-        String result = computerBaseBallNumber.compare(playerBaseBallNumber.getNumberString());
+        String result = controller.judge();
         String response = GameView.response(result);
         StandardOutput.println(response);
         if("3스트라이크".equals(response)){

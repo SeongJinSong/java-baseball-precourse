@@ -6,7 +6,6 @@ import baseball.port.outbound.StandardOutput;
 import baseball.status.Exit;
 import baseball.status.GameStatus;
 import baseball.status.Ready;
-import baseball.status.Playing;
 
 public class BaseBallGameController {
     private GameStatus gameStatus = new Ready();
@@ -17,29 +16,24 @@ public class BaseBallGameController {
     }
     public void init() {
         computerBaseBallNumber = new BaseBallNumber();
-        gameStatus = new Playing();
     }
     public boolean isExit(){
         return gameStatus.isExit();
     }
-
-    public BaseBallNumber getPlayerBaseBallNumbers() {
-        return playerBaseBallNumber.getNumbers();
-    }
-    public BaseBallNumber getComputerBaseBallNumbers() {
-        return computerBaseBallNumber.getNumbers();
-    }
     public void getPlayerInput() {
         StandardOutput.print("숫자를 입력해주세요: ");
         String result = StandardInput.readLine();
-        checkValid(result);
-        playerBaseBallNumber = new BaseBallNumber(result);
-    }
-    private void checkValid(String result) {
-        if(!BaseBallNumber.isValid(result)) {
-            System.out.println("게임 종료");
+        try {
+            playerBaseBallNumber = new BaseBallNumber(result);
+        } catch (IllegalArgumentException e) {
+            StandardOutput.println("게임 종료");
             gameStatus = new Exit();
-            throw new IllegalArgumentException("invalid baseball number");
+            throw e;
         }
     }
+    public String judge(){
+        Referee referee = new Referee(computerBaseBallNumber, playerBaseBallNumber);
+        return referee.judge();
+    }
+
 }

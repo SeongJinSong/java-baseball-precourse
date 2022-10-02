@@ -15,31 +15,14 @@ public class BaseBallNumber {
         }
     }
 
-    public BaseBallNumber(List<Character> number) {
-        this.numbers = number;
-    }
-
     public BaseBallNumber(String s) {
+        if (!isValid(s)) {
+            throw new IllegalArgumentException("invalid baseball number");
+        }
         numbers = new ArrayList<>();
         for (int i = 0; i < s.length(); i++) {
             numbers.add(s.charAt(i));
         }
-    }
-
-    public String compare(String input){
-        int ballCnt = 0, strikeCnt = 0;
-        for (int i = 0; i < input.length(); i++) {
-            int idx = numbers.indexOf(input.charAt(i));
-            if(idx!=-1){
-                if(i==idx)strikeCnt++;
-                else ballCnt++;
-            }
-        }
-        return ballCnt + " " + strikeCnt;
-    }
-
-    public BaseBallNumber getNumbers(){
-        return this;
     }
 
     public String getNumberString(){

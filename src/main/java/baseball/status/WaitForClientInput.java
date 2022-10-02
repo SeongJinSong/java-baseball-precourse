@@ -6,7 +6,7 @@ public class WaitForClientInput implements GameStatus{
     @Override
     public GameStatus play(BaseBallGameController controller) {
         controller.getPlayerInput();
-        return new Playing();
+        return new Verifying();
     }
 
     @Override
