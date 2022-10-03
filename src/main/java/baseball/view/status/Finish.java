@@ -20,7 +20,8 @@ public class Finish implements GameStatus {
             StandardOutput.println("게임 종료");
             return new Exit();
         }
-        throw new IllegalArgumentException("게임 종료");
+        StandardOutput.println("잘못된 값을 입력하셨습니다.");
+        return new Exit();
     }
 
     @Override

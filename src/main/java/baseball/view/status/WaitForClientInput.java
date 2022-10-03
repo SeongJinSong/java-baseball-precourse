@@ -10,7 +10,12 @@ public class WaitForClientInput implements GameStatus {
     public GameStatus play(BaseBallGameController controller) throws IllegalArgumentException {
         StandardOutput.print("숫자를 입력해주세요: ");
         String result = StandardInput.readLine();
-        controller.setPlayerBaseBallNumber(new BaseBallNumber(result));
+        try {
+            controller.setPlayerBaseBallNumber(new BaseBallNumber(result));
+        } catch (IllegalArgumentException e) {
+            StandardOutput.println("잘못된 값을 입력하셨습니다.");
+            return new Exit();
+        }
         return new Verifying();
     }
 
