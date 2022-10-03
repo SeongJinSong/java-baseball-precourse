@@ -39,6 +39,7 @@ public class Referee {
             ballCount++;
         }
     }
+
     public int getBallCount() {
         return ballCount;
     }
