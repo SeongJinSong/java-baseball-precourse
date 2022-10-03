@@ -1,4 +1,4 @@
-package baseball.game;
+package baseball.model;
 
 import baseball.model.BaseBallNumber;
 import baseball.model.Referee;
