@@ -1,7 +1,5 @@
 package baseball.model;
 
-import baseball.model.BaseBallNumber;
-
 public class Referee {
     private int ballCount = 0;
     private int strikeCount = 0;
@@ -13,7 +11,7 @@ public class Referee {
         this.player = player.getNumberString();
     }
 
-    public String judge() {
+    public Referee judge() {
         for (int i = 0; i < computer.length(); i++) {
             countStrike(computer.charAt(i), player.charAt(i));
         }
@@ -21,7 +19,7 @@ public class Referee {
             countBall(c);
         }
         ballCount = ballCount - strikeCount;
-        return ballCount + " " + strikeCount;
+        return this;
     }
 
     private void countBall(char input) {
@@ -41,4 +39,12 @@ public class Referee {
             ballCount++;
         }
     }
+    public int getBallCount() {
+        return ballCount;
+    }
+
+    public int getStrikeCount() {
+        return strikeCount;
+    }
+
 }

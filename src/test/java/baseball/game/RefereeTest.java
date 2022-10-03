@@ -12,24 +12,48 @@ class RefereeTest {
     @DisplayName("심판이 판단을 정상적으로 하는지 테스트")
     void judge() {
         BaseBallNumber playerBaseBallNumber;
+        Referee judge;
         BaseBallNumber computerBaseBallNumber = new BaseBallNumber("425");
+
         playerBaseBallNumber = new BaseBallNumber("123");
-        assertThat(new Referee(computerBaseBallNumber, playerBaseBallNumber).judge()).isEqualTo("0 1");
+        judge = new Referee(computerBaseBallNumber, playerBaseBallNumber).judge();
+        assertThat(judge.getBallCount()).isEqualTo(0);
+        assertThat(judge.getStrikeCount()).isEqualTo(1);
+
         playerBaseBallNumber = new BaseBallNumber("456");
-        assertThat(new Referee(computerBaseBallNumber, playerBaseBallNumber).judge()).isEqualTo("1 1");
+        judge = new Referee(computerBaseBallNumber, playerBaseBallNumber).judge();
+        assertThat(judge.getBallCount()).isEqualTo(1);
+        assertThat(judge.getStrikeCount()).isEqualTo(1);
+
         playerBaseBallNumber = new BaseBallNumber("789");
-        assertThat(new Referee(computerBaseBallNumber, playerBaseBallNumber).judge()).isEqualTo("0 0");
+        judge = new Referee(computerBaseBallNumber, playerBaseBallNumber).judge();
+        assertThat(judge.getBallCount()).isEqualTo(0);
+        assertThat(judge.getStrikeCount()).isEqualTo(0);
 
         BaseBallNumber computerBaseBallNumber2 = new BaseBallNumber("713");
         playerBaseBallNumber = new BaseBallNumber("123");
-        assertThat(new Referee(computerBaseBallNumber2, playerBaseBallNumber).judge()).isEqualTo("1 1");
+        judge = new Referee(computerBaseBallNumber2, playerBaseBallNumber).judge();
+        assertThat(judge.getBallCount()).isEqualTo(1);
+        assertThat(judge.getStrikeCount()).isEqualTo(1);
+
         playerBaseBallNumber = new BaseBallNumber("145");
-        assertThat(new Referee(computerBaseBallNumber2, playerBaseBallNumber).judge()).isEqualTo("1 0");
+        judge = new Referee(computerBaseBallNumber2, playerBaseBallNumber).judge();
+        assertThat(judge.getBallCount()).isEqualTo(1);
+        assertThat(judge.getStrikeCount()).isEqualTo(0);
+
         playerBaseBallNumber = new BaseBallNumber("671");
-        assertThat(new Referee(computerBaseBallNumber2, playerBaseBallNumber).judge()).isEqualTo("2 0");
+        judge = new Referee(computerBaseBallNumber2, playerBaseBallNumber).judge();
+        assertThat(judge.getBallCount()).isEqualTo(2);
+        assertThat(judge.getStrikeCount()).isEqualTo(0);
+
         playerBaseBallNumber = new BaseBallNumber("216");
-        assertThat(new Referee(computerBaseBallNumber2, playerBaseBallNumber).judge()).isEqualTo("0 1");
+        judge = new Referee(computerBaseBallNumber2, playerBaseBallNumber).judge();
+        assertThat(judge.getBallCount()).isEqualTo(0);
+        assertThat(judge.getStrikeCount()).isEqualTo(1);
+
         playerBaseBallNumber = new BaseBallNumber("713");
-        assertThat(new Referee(computerBaseBallNumber2, playerBaseBallNumber).judge()).isEqualTo("0 3");
+        judge = new Referee(computerBaseBallNumber2, playerBaseBallNumber).judge();
+        assertThat(judge.getBallCount()).isEqualTo(0);
+        assertThat(judge.getStrikeCount()).isEqualTo(3);
     }
 }

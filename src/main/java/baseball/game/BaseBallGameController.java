@@ -26,7 +26,7 @@ public class BaseBallGameController {
         playerBaseBallNumber = baseBallNumber;
     }
 
-    public String judge() {
+    public Referee judge() {
         Referee referee = new Referee(computerBaseBallNumber, playerBaseBallNumber);
         return referee.judge();
     }
